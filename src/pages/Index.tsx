@@ -1,14 +1,32 @@
 import { useState } from "react";
 import HeroSection from "/components/HeroSection";
-import SearchFilters, { Filters } from "/components/SearchFilters";
+import MediaUpload from "/components/MediaUpload";
+import MediaTagging, { TagFilters } from "/components/MediaTagging";
 import ResultsGrid from "/components/ResultsGrid";
 import { carsDataset, Car } from "/data/carsDataset";
 
 const Index = () => {
   const [results, setResults] = useState<Car[]>([]);
   const [hasSearched, setHasSearched] = useState(false);
+  const [currentMedia, setCurrentMedia] = useState<{ url: string; type: "image" | "video" } | null>(null);
 
-  const handleSearch = (filters: Filters) => {
+  const handleMediaSelect = (file: File, previewUrl: string, type: "image" | "video") => {
+    setCurrentMedia({ url: previewUrl, type });
+    // Reset search when new media is uploaded
+    setResults([]);
+    setHasSearched(false);
+  };
+
+  const handleMediaClear = () => {
+    if (currentMedia?.url) {
+      URL.revokeObjectURL(currentMedia.url);
+    }
+    setCurrentMedia(null);
+    setResults([]);
+    setHasSearched(false);
+  };
+
+  const handleSearch = (filters: TagFilters) => {
     const filtered = carsDataset.filter((car) => {
       if (filters.make && car.make !== filters.make) return false;
       if (filters.model && car.model !== filters.model) return false;
@@ -22,7 +40,7 @@ const Index = () => {
     setHasSearched(true);
   };
 
-  const handleClear = () => {
+  const handleTagClear = () => {
     setResults([]);
     setHasSearched(false);
   };
@@ -51,8 +69,21 @@ const Index = () => {
       <main className="container mx-auto px-4 pt-24">
         <HeroSection />
         
-        <div className="max-w-6xl mx-auto space-y-10 pb-20">
-          <SearchFilters onSearch={handleSearch} onClear={handleClear} />
+        <div className="max-w-6xl mx-auto space-y-8 pb-20">
+          <MediaUpload 
+            onMediaSelect={handleMediaSelect} 
+            onClear={handleMediaClear}
+            currentMedia={currentMedia}
+          />
+          
+          {currentMedia && (
+            <MediaTagging 
+              onSearch={handleSearch} 
+              onClear={handleTagClear}
+              disabled={!currentMedia}
+            />
+          )}
+          
           <ResultsGrid cars={results} hasSearched={hasSearched} />
         </div>
       </main>
