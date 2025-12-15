@@ -1,4 +1,4 @@
-import { Car, Scan, Database } from "lucide-react";
+import { Car, Scan, Database, Upload } from "lucide-react";
 
 const HeroSection = () => {
   return (
@@ -23,14 +23,18 @@ const HeroSection = () => {
 
         {/* Description */}
         <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 opacity-0 animate-fade-in" style={{ animationDelay: "0.2s" }}>
-          Find any vehicle in our database by its unique features. Search by make, model, year, body type, or color to identify and locate specific cars.
+          Upload an image or video of a vehicle, tag its features, and find matching cars in our database. Search by make, model, year, body type, or color.
         </p>
 
         {/* Feature Pills */}
         <div className="flex flex-wrap justify-center gap-4 opacity-0 animate-fade-in" style={{ animationDelay: "0.3s" }}>
           <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-secondary/50 border border-border">
+            <Upload className="w-4 h-4 text-primary" />
+            <span className="text-sm text-foreground">Image & Video Upload</span>
+          </div>
+          <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-secondary/50 border border-border">
             <Car className="w-4 h-4 text-primary" />
-            <span className="text-sm text-foreground">Multi-Feature Search</span>
+            <span className="text-sm text-foreground">Manual Feature Tagging</span>
           </div>
           <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-secondary/50 border border-border">
             <Scan className="w-4 h-4 text-primary" />
