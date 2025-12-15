@@ -1,73 +1,192 @@
-# Welcome to your Lovable project
+# 🚓 AI-Based Witness-Guided Vehicle Re-Identification System
 
-## Project info
+An AI-powered computer vision system that uses **witness descriptions** (vehicle color, brand, and type) to **identify and re-identify vehicles across CCTV and traffic cameras**, even when license plates are not visible.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+This project demonstrates how **deep visual appearance features** trained on the **Stanford Cars Dataset** can be combined with real-time surveillance footage to support **crime scene investigation**.
 
-## How can I edit this code?
+---
 
-There are several ways of editing your application.
+## 📌 Problem Statement
 
-**Use Lovable**
+During crime investigations, witnesses often provide only **visual descriptions** of vehicles such as:
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+> *“A white car, possibly a Toyota, was seen near the crime scene.”*
 
-Changes made via Lovable will be committed automatically to this repo.
+Traditional systems rely heavily on **license plate recognition**, which fails in:
 
-**Use your preferred IDE**
+* Low resolution videos
+* Occlusion
+* Motion blur
+* Night-time conditions
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+This project addresses that limitation using **Vehicle Re-Identification (ReID)** based on **visual features**.
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+---
 
-Follow these steps:
+## 🎯 Objectives
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+* Detect vehicles from CCTV and traffic camera footage
+* Extract vehicle appearance features (color, brand, model)
+* Use witness-provided information to guide vehicle search
+* Re-identify the same vehicle across multiple cameras
+* Support identification of **any car brand**, not limited to a single manufacturer
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+---
 
-# Step 3: Install the necessary dependencies.
-npm i
+## 🧠 System Overview
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+**```
+Witness Description (Text Input)
+        ↓
+Vehicle Detection (YOLO)
+        ↓
+Feature Extraction (CNN)
+        ↓
+Vehicle Appearance Embeddings
+        ↓
+Feature Matching & Similarity Scoring
+        ↓
+Vehicle Re-Identification Across Camera**s
 ```
 
-**Edit a file directly in GitHub**
+---
+**
+## 🗂️ Dataset Used
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### **Stanford Cars Dataset**
 
-**Use GitHub Codespaces**
+* **16,185 images**
+* **196 car classes**
+* Covers multiple brands including:
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+  * Toyota
+  * Hyundai
+  * Honda
+  * BMW
+  * Audi
+  * Mercedes
+  * Ford
 
-## What technologies are used for this project?
+📌 **Usage in this project:**
 
-This project is built with:
+* Train a CNN to learn fine-grained vehicle appearance features
+* Extract deep embeddings used for vehicle re-identification
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+> Note: While Stanford Cars is a classification dataset, the learned embeddings are used for similarity-based vehicle ReID.
 
-## How can I deploy this project?
+---
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+## 🔧 Technologies & Tools
 
-## Can I connect a custom domain to my Lovable project?
+| Component            | Technology                  |
+| -------------------- | --------------------------- |
+| Programming Language | Python                      |
+| Vehicle Detection    | YOLOv8                      |
+| Feature Extraction   | CNN (ResNet / MobileNet)    |
+| Computer Vision      | OpenCV                      |
+| Similarity Matching  | Cosine Similarity           |
+| Dataset              | Stanford Cars Dataset       |
+| UI Demo              | Lovable (Prototype Preview) |
 
-Yes, you can!
+---
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## 🧩 Key Features
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+* ✅ Witness-guided vehicle search
+* ✅ Brand and model recognition
+* ✅ Color-based filtering
+* ✅ Vehicle Re-Identification across multiple cameras
+* ✅ Works without license plate recognition
+* ✅ Supports multiple car brands and models
+
+---
+
+## 🖥️ Demo Workflow
+
+1. Witness enters vehicle details (color, brand, type)
+2. System analyzes CCTV and traffic camera footage
+3. Vehicles are detected and features are extracted
+4. Visual features are matched with witness description
+5. Matching vehicles are displayed with confidence scores
+6. Same vehicle is re-identified across different cameras
+
+---
+
+## 📊 Sample Output**
+
+```
+Vehicle Match Found
+
+Vehicle Type: Car
+Color: White
+Brand: Toyota
+Model: Corolla
+Camera ID: CCTV-03
+Time Detected: 18:42:11
+Match Confidence: 93%
+Status: MATCH FOUND
+```
+
+---
+
+## 🚨 Use Cases
+
+* Crime scene investigation
+* Hit-and-run analysis
+* Smart city surveillance
+* Traffic monitoring systems
+* Law enforcement support systems
+
+---
+
+## ⚠️ Challenges & Limitations
+
+* Low-light and blurred footage
+* Occluded vehicle logos
+* Similar-looking car models
+* Witness description ambiguity
+
+---
+
+## 🔮 Future Enhancements
+
+* Integration with Vehicle ReID datasets (VeRi-776, VehicleID)
+* Multi-camera tracking with DeepSORT
+* Text-to-Video retrieval using CLIP
+* Real-time RTSP camera integration
+* License plate recognition as an optional module
+
+---
+
+## 📘 Type of Study
+
+* Applied Artificial Intelligence
+* Computer Vision
+* Surveillance Analytics
+* Deep Learning–based Vehicle Re-Identification
+
+---
+
+## 🧑‍🎓 Academic Note
+
+This project is developed for **educational and research purposes** to demonstrate the application of AI in real-world crime investigation scenarios.
+
+---
+
+## 👤 Author
+
+**Karivaradhan**
+B.Tech – Electronics and Communication Engineering
+AI & Computer Vision Enthusiast
+
+---
+
+## 📄 License
+
+This project is licensed for **academic and non-commercial use only**.
+
+---
+
+### ⭐ If you like this project, consider giving it a star!
+
+
