@@ -86,7 +86,7 @@ Vehicle Re-Identification Across Camera**s
 | Computer Vision      | OpenCV                      |
 | Similarity Matching  | Cosine Similarity           |
 | Dataset              | Stanford Cars Dataset       |
-| UI Demo              | Lovable (Prototype Preview) |
+
 
 ---
 
