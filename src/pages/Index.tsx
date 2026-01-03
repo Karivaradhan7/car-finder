@@ -105,7 +105,7 @@ const Index = () => {
         <div className="container mx-auto max-w-4xl text-center">
           <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/30 rounded-full px-4 py-2 mb-6">
             <Database className="w-4 h-4 text-primary" />
-            <span className="text-sm text-primary">Stanford Cars Dataset • 196 Models</span>
+            <span className="text-sm text-primary">Stanford Cars • CompCars • VeRi-776 Datasets</span>
           </div>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
             Vehicle Re-Identification System
@@ -116,21 +116,26 @@ const Index = () => {
           </p>
           
           {/* Stats */}
-          <div className="grid grid-cols-3 gap-4 mt-8 max-w-lg mx-auto">
+          <div className="grid grid-cols-4 gap-4 mt-8 max-w-2xl mx-auto">
             <div className="bg-card/50 border border-border rounded-lg p-3">
               <Cpu className="w-5 h-5 text-primary mx-auto mb-1" />
-              <div className="text-xl font-bold text-foreground">YOLO</div>
+              <div className="text-xl font-bold text-foreground">YOLOv8</div>
               <div className="text-xs text-muted-foreground">Detection</div>
             </div>
             <div className="bg-card/50 border border-border rounded-lg p-3">
               <Database className="w-5 h-5 text-primary mx-auto mb-1" />
-              <div className="text-xl font-bold text-foreground">196</div>
+              <div className="text-xl font-bold text-foreground">431+</div>
               <div className="text-xs text-muted-foreground">Car Models</div>
             </div>
             <div className="bg-card/50 border border-border rounded-lg p-3">
               <Camera className="w-5 h-5 text-primary mx-auto mb-1" />
-              <div className="text-xl font-bold text-foreground">CNN</div>
-              <div className="text-xs text-muted-foreground">Classification</div>
+              <div className="text-xl font-bold text-foreground">3</div>
+              <div className="text-xs text-muted-foreground">Datasets</div>
+            </div>
+            <div className="bg-card/50 border border-border rounded-lg p-3">
+              <Shield className="w-5 h-5 text-primary mx-auto mb-1" />
+              <div className="text-xl font-bold text-foreground">14</div>
+              <div className="text-xs text-muted-foreground">Colors</div>
             </div>
           </div>
         </div>
@@ -167,7 +172,7 @@ const Index = () => {
       <footer className="border-t border-border py-6">
         <div className="container mx-auto px-4 text-center">
           <p className="text-sm text-muted-foreground">
-            Powered by Stanford Cars Dataset • Deep Learning Vehicle Re-Identification
+            Powered by Stanford Cars • CompCars • VeRi-776 Datasets • Deep Learning Vehicle Re-Identification
           </p>
         </div>
       </footer>

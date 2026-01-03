@@ -53,8 +53,8 @@ const VehicleComparisonView = ({ similarityScore }: VehicleComparisonViewProps) 
       <div className="bg-muted/20 rounded-lg p-4 text-center border border-border/50">
         <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
           "The same vehicle is re-identified across different cameras using deep visual 
-          appearance features learned from the Stanford Cars Dataset, enabling identification 
-          of any car brand without relying on license plates."
+          appearance features learned from Stanford Cars, CompCars, and VeRi-776 datasets, 
+          enabling identification of any car brand without relying on license plates."
         </p>
         
         <div className="flex items-center justify-center gap-3">
