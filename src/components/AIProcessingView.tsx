@@ -9,7 +9,7 @@ const processingSteps = [
   "Extracting video frames from CCTV and traffic cameras",
   "Detecting vehicles using YOLOv8 AI detector",
   "Analyzing vehicle color using Color-CNN classifier",
-  "Identifying brand & model using Stanford Cars + CompCars + VeRi-776 datasets",
+  "Identifying brand & model using Stanford Cars + CompCars + VeRi-776 + BoxCars + VRIC datasets",
   "Extracting deep appearance embeddings with ResNet-50 backbone",
   "Matching vehicles with witness-provided attributes",
   "Re-identifying the same vehicle across multiple cameras using triplet loss features",
