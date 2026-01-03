@@ -7,12 +7,12 @@ interface AIProcessingViewProps {
 
 const processingSteps = [
   "Extracting video frames from CCTV and traffic cameras",
-  "Detecting vehicles using YOLO-based AI",
-  "Analyzing vehicle color and type",
-  "Identifying vehicle brand and model using CNN trained on the Stanford Cars Dataset",
-  "Extracting deep appearance embeddings",
+  "Detecting vehicles using YOLOv8 AI detector",
+  "Analyzing vehicle color using Color-CNN classifier",
+  "Identifying brand & model using Stanford Cars + CompCars + VeRi-776 datasets",
+  "Extracting deep appearance embeddings with ResNet-50 backbone",
   "Matching vehicles with witness-provided attributes",
-  "Re-identifying the same vehicle across multiple cameras",
+  "Re-identifying the same vehicle across multiple cameras using triplet loss features",
 ];
 
 const AIProcessingView = ({ onComplete }: AIProcessingViewProps) => {

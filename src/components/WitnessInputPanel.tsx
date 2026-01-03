@@ -25,9 +25,9 @@ const WitnessInputPanel = ({ onSearch }: WitnessInputPanelProps) => {
     timeRange: "",
   });
 
-  const vehicleTypes = ["Car", "Bike", "Truck"];
-  const vehicleColors = ["White", "Black", "Red", "Blue", "Silver"];
-  const vehicleBrands = ["Any", "Toyota", "Hyundai", "Honda", "BMW", "Audi", "Mercedes", "Ford"];
+  const vehicleTypes = ["Car", "Bike", "Truck", "SUV", "Van"];
+  const vehicleColors = ["White", "Black", "Red", "Blue", "Silver", "Gray", "Green", "Yellow", "Orange", "Brown", "Beige", "Gold", "Maroon", "Navy Blue"];
+  const vehicleBrands = ["Any", "Toyota", "Hyundai", "Honda", "BMW", "Audi", "Mercedes", "Ford", "Chevrolet", "Nissan", "Volkswagen", "Kia", "Mazda", "Suzuki", "Tata", "Mahindra"];
 
   const handleSearch = () => {
     onSearch(filters);
