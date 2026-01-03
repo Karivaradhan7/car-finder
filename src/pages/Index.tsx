@@ -105,7 +105,7 @@ const Index = () => {
         <div className="container mx-auto max-w-4xl text-center">
           <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/30 rounded-full px-4 py-2 mb-6">
             <Database className="w-4 h-4 text-primary" />
-            <span className="text-sm text-primary">Stanford Cars • CompCars • VeRi-776 Datasets</span>
+            <span className="text-sm text-primary">Stanford Cars • CompCars • VeRi-776 • BoxCars • VRIC Datasets</span>
           </div>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
             Vehicle Re-Identification System
@@ -129,7 +129,7 @@ const Index = () => {
             </div>
             <div className="bg-card/50 border border-border rounded-lg p-3">
               <Camera className="w-5 h-5 text-primary mx-auto mb-1" />
-              <div className="text-xl font-bold text-foreground">3</div>
+              <div className="text-xl font-bold text-foreground">5</div>
               <div className="text-xs text-muted-foreground">Datasets</div>
             </div>
             <div className="bg-card/50 border border-border rounded-lg p-3">
@@ -172,7 +172,7 @@ const Index = () => {
       <footer className="border-t border-border py-6">
         <div className="container mx-auto px-4 text-center">
           <p className="text-sm text-muted-foreground">
-            Powered by Stanford Cars • CompCars • VeRi-776 Datasets • Deep Learning Vehicle Re-Identification
+            Powered by Stanford Cars • CompCars • VeRi-776 • BoxCars • VRIC Datasets • Deep Learning Vehicle Re-Identification
           </p>
         </div>
       </footer>
