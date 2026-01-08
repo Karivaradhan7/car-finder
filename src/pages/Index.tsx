@@ -1,9 +1,9 @@
 import { useState } from "react";
-import WitnessInputPanel, { WitnessFilters } from "/components/WitnessInputPanel";
-import AIProcessingView from "/components/AIProcessingView";
-import VehicleResultsDashboard from "/components/VehicleResultsDashboard";
-import VehicleComparisonView from "/components/VehicleComparisonView";
-import { VehicleResult } from "/components/VehicleResultCard";
+import WitnessInputPanel, { WitnessFilters } from "@/components/WitnessInputPanel";
+import AIProcessingView from "@/components/AIProcessingView";
+import VehicleResultsDashboard from "@/components/VehicleResultsDashboard";
+import VehicleComparisonView from "@/components/VehicleComparisonView";
+import { VehicleResult } from "@/components/VehicleResultCard";
 import { Shield, Database, Cpu, Camera } from "lucide-react";
 
 type AppState = "input" | "processing" | "results";

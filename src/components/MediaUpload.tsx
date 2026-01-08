@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
-import { Button } from "/components/ui/button";
-import { Card } from "/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 import { Upload, X, Image, Video, Play, Pause } from "lucide-react";
 
 interface MediaUploadProps {
