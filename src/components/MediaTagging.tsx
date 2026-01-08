@@ -1,13 +1,13 @@
 import { useState } from "react";
-import { Button } from "/components/ui/button";
-import { Card } from "/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "/components/ui/select";
+} from "@/components/ui/select";
 import { Tag, Search, RotateCcw } from "lucide-react";
 import { makes, bodyTypes, colors, years, getModelsByMake } from "/data/carsDataset";
 

@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import { Search, X, Car, Palette, Calendar, Layers } from "lucide-react";
-import { Button } from "/components/ui/button";
+import { Button } from "@/components/ui/button";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "/components/ui/select";
+} from "@/components/ui/select";
 import { makes, bodyTypes, colors, years, getModelsByMake } from "/data/carsDataset";
 
 export interface Filters {
