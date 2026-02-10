@@ -5,57 +5,60 @@ import VehicleResultsDashboard from "@/components/VehicleResultsDashboard";
 import VehicleComparisonView from "@/components/VehicleComparisonView";
 import { VehicleResult } from "@/components/VehicleResultCard";
 import { Shield, Database, Cpu, Camera } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "sonner";
 
 type AppState = "input" | "processing" | "results";
-
-const mockResults: VehicleResult[] = [
-  {
-    id: "1",
-    vehicleType: "Car",
-    color: "White",
-    brand: "Toyota",
-    model: "Corolla",
-    cameraId: "CCTV-03",
-    timeDetected: "18:42:11",
-    matchConfidence: 93,
-    matchStatus: "exact",
-  },
-  {
-    id: "2",
-    vehicleType: "Car",
-    color: "Black",
-    brand: "BMW",
-    model: "3 Series",
-    cameraId: "Traffic-Cam-05",
-    timeDetected: "18:44:36",
-    matchConfidence: 90,
-    matchStatus: "exact",
-  },
-  {
-    id: "3",
-    vehicleType: "Car",
-    color: "White",
-    brand: "Unknown",
-    cameraId: "Junction-Cam-02",
-    timeDetected: "18:46:10",
-    matchConfidence: 72,
-    matchStatus: "partial",
-  },
-];
 
 const Index = () => {
   const [appState, setAppState] = useState<AppState>("input");
   const [results, setResults] = useState<VehicleResult[]>([]);
   const [showComparison, setShowComparison] = useState(false);
+  const [analysisError, setAnalysisError] = useState<string | null>(null);
 
-  const handleSearch = (filters: WitnessFilters) => {
+  const handleSearch = async (filters: WitnessFilters) => {
     console.log("Search filters:", filters);
     setAppState("processing");
+    setAnalysisError(null);
+
+    try {
+      const { data, error } = await supabase.functions.invoke("analyze-vehicle", {
+        body: { witnessDescription: filters },
+      });
+
+      if (error) {
+        throw new Error(error.message || "Analysis failed");
+      }
+
+      if (data?.error) {
+        throw new Error(data.error);
+      }
+
+      const matches: VehicleResult[] = (data.matches || []).map(
+        (m: any, i: number) => ({
+          id: m.id || String(i + 1),
+          vehicleType: m.vehicleType,
+          color: m.color,
+          brand: m.brand,
+          model: m.model || "Unknown",
+          cameraId: m.cameraId,
+          timeDetected: m.timeDetected,
+          matchConfidence: m.matchConfidence,
+          matchStatus: m.matchStatus,
+        })
+      );
+
+      setResults(matches);
+      setAppState("results");
+    } catch (err: any) {
+      console.error("Vehicle analysis error:", err);
+      toast.error(err.message || "Failed to analyze vehicles");
+      setAppState("input");
+    }
   };
 
   const handleProcessingComplete = () => {
-    setResults(mockResults);
-    setAppState("results");
+    // Processing is now handled by the API call
   };
 
   const handleViewFrame = (id: string) => {
