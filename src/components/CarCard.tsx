@@ -1,5 +1,5 @@
 import { Car as CarIcon, Calendar, Palette, Layers } from "lucide-react";
-import { Car } from "/data/carsDataset";
+import { Car } from "@/data/carsDataset";
 
 interface CarCardProps {
   car: Car;

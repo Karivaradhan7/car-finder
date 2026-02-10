@@ -8,7 +8,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { makes, bodyTypes, colors, years, getModelsByMake } from "/data/carsDataset";
+import { makes, bodyTypes, colors, years, getModelsByMake } from "@/data/carsDataset";
 
 export interface Filters {
   make: string;
