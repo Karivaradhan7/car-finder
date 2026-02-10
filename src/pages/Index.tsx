@@ -14,25 +14,22 @@ const Index = () => {
   const [appState, setAppState] = useState<AppState>("input");
   const [results, setResults] = useState<VehicleResult[]>([]);
   const [showComparison, setShowComparison] = useState(false);
-  const [analysisError, setAnalysisError] = useState<string | null>(null);
+  const [pendingResults, setPendingResults] = useState<VehicleResult[] | null>(null);
+  const [apiDone, setApiDone] = useState(false);
 
   const handleSearch = async (filters: WitnessFilters) => {
     console.log("Search filters:", filters);
     setAppState("processing");
-    setAnalysisError(null);
+    setApiDone(false);
+    setPendingResults(null);
 
     try {
       const { data, error } = await supabase.functions.invoke("analyze-vehicle", {
         body: { witnessDescription: filters },
       });
 
-      if (error) {
-        throw new Error(error.message || "Analysis failed");
-      }
-
-      if (data?.error) {
-        throw new Error(data.error);
-      }
+      if (error) throw new Error(error.message || "Analysis failed");
+      if (data?.error) throw new Error(data.error);
 
       const matches: VehicleResult[] = (data.matches || []).map(
         (m: any, i: number) => ({
@@ -48,8 +45,8 @@ const Index = () => {
         })
       );
 
-      setResults(matches);
-      setAppState("results");
+      setPendingResults(matches);
+      setApiDone(true);
     } catch (err: any) {
       console.error("Vehicle analysis error:", err);
       toast.error(err.message || "Failed to analyze vehicles");
@@ -58,8 +55,29 @@ const Index = () => {
   };
 
   const handleProcessingComplete = () => {
-    // Processing is now handled by the API call
+    if (pendingResults) {
+      setResults(pendingResults);
+      setAppState("results");
+    }
+    // If API hasn't finished yet, wait — the useEffect below handles it
   };
+
+  // When both animation and API are done, show results
+  const handleApiAndAnimationReady = () => {
+    if (apiDone && pendingResults && appState === "processing") {
+      setResults(pendingResults);
+      setAppState("results");
+    }
+  };
+
+  // Check if API finished after animation completed
+  if (apiDone && pendingResults && appState === "processing") {
+    // Defer to next tick to avoid state update during render
+    setTimeout(() => {
+      setResults(pendingResults);
+      setAppState("results");
+    }, 0);
+  }
 
   const handleViewFrame = (id: string) => {
     console.log("View frame:", id);
@@ -74,6 +92,8 @@ const Index = () => {
     setAppState("input");
     setResults([]);
     setShowComparison(false);
+    setPendingResults(null);
+    setApiDone(false);
   };
 
   return (
