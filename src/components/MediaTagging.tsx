@@ -9,7 +9,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Tag, Search, RotateCcw } from "lucide-react";
-import { makes, bodyTypes, colors, years, getModelsByMake } from "/data/carsDataset";
+import { makes, bodyTypes, colors, years, getModelsByMake } from "@/data/carsDataset";
 
 export interface TagFilters {
   make: string;

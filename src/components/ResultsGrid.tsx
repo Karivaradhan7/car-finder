@@ -1,4 +1,4 @@
-import { Car } from "/data/carsDataset";
+import { Car } from "@/data/carsDataset";
 import CarCard from "./CarCard";
 import { Car as CarIcon, SearchX } from "lucide-react";
 
