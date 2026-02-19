@@ -12,6 +12,8 @@ export interface WitnessFilters {
   vehicleType: string;
   vehicleColor: string;
   vehicleBrand: string;
+  vehicleModel: string;
+  partialPlate: string;
   crimeLocation: string;
   timeRange: string;
 }
@@ -21,6 +23,8 @@ const WitnessInputPanel = ({ onSearch }: WitnessInputPanelProps) => {
     vehicleType: "",
     vehicleColor: "",
     vehicleBrand: "",
+    vehicleModel: "",
+    partialPlate: "",
     crimeLocation: "",
     timeRange: "",
   });
@@ -41,7 +45,7 @@ const WitnessInputPanel = ({ onSearch }: WitnessInputPanelProps) => {
         </div>
         <div>
           <h2 className="text-lg font-semibold text-foreground">Witness Input Panel</h2>
-          <p className="text-sm text-muted-foreground">Enter vehicle details from witness description</p>
+          <p className="text-sm text-muted-foreground">Enter vehicle details from witness description at the crime scene</p>
         </div>
       </div>
 
@@ -98,6 +102,26 @@ const WitnessInputPanel = ({ onSearch }: WitnessInputPanelProps) => {
         </div>
 
         <div className="space-y-2">
+          <label className="text-sm font-medium text-foreground">Vehicle Model</label>
+          <Input
+            placeholder="e.g., Camry, Civic, 3 Series"
+            value={filters.vehicleModel}
+            onChange={(e) => setFilters({ ...filters, vehicleModel: e.target.value })}
+            className="bg-background/50 border-border"
+          />
+        </div>
+
+        <div className="space-y-2">
+          <label className="text-sm font-medium text-foreground">Partial Number Plate</label>
+          <Input
+            placeholder="e.g., KA-05-**-1234 or MH-12-AB-**"
+            value={filters.partialPlate}
+            onChange={(e) => setFilters({ ...filters, partialPlate: e.target.value })}
+            className="bg-background/50 border-border"
+          />
+        </div>
+
+        <div className="space-y-2">
           <label className="text-sm font-medium text-foreground">Crime Location</label>
           <Input
             placeholder="Enter location"
@@ -120,11 +144,11 @@ const WitnessInputPanel = ({ onSearch }: WitnessInputPanelProps) => {
 
       <div className="pt-4 border-t border-border/50">
         <p className="text-sm text-muted-foreground mb-4 italic">
-          "Witness provides visual details of the vehicle seen at the crime scene."
+          "Witness provides visual details of the vehicle seen at the crime scene — color, brand, model, partial plate number."
         </p>
         <Button onClick={handleSearch} className="w-full md:w-auto gap-2">
           <Search className="w-4 h-4" />
-          Search Vehicle
+          Search CCTV Cameras
         </Button>
       </div>
     </div>

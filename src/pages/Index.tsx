@@ -16,6 +16,9 @@ const Index = () => {
   const [showComparison, setShowComparison] = useState(false);
   const [pendingResults, setPendingResults] = useState<VehicleResult[] | null>(null);
   const [apiDone, setApiDone] = useState(false);
+  const [analysisSummary, setAnalysisSummary] = useState("");
+  const [totalCamerasScanned, setTotalCamerasScanned] = useState(0);
+  const [totalVehiclesDetected, setTotalVehiclesDetected] = useState(0);
 
   const handleSearch = async (filters: WitnessFilters) => {
     console.log("Search filters:", filters);
@@ -38,12 +41,20 @@ const Index = () => {
           color: m.color,
           brand: m.brand,
           model: m.model || "Unknown",
+          plateNumber: m.plateNumber,
           cameraId: m.cameraId,
+          cameraLocation: m.cameraLocation,
           timeDetected: m.timeDetected,
           matchConfidence: m.matchConfidence,
           matchStatus: m.matchStatus,
+          imageUrl: m.imageUrl,
+          description: m.description,
         })
       );
+
+      setAnalysisSummary(data.summary || "");
+      setTotalCamerasScanned(data.totalCamerasScanned || 0);
+      setTotalVehiclesDetected(data.totalVehiclesDetected || 0);
 
       setPendingResults(matches);
       setApiDone(true);
@@ -94,6 +105,9 @@ const Index = () => {
     setShowComparison(false);
     setPendingResults(null);
     setApiDone(false);
+    setAnalysisSummary("");
+    setTotalCamerasScanned(0);
+    setTotalVehiclesDetected(0);
   };
 
   return (
@@ -179,6 +193,9 @@ const Index = () => {
             <>
               <VehicleResultsDashboard
                 results={results}
+                summary={analysisSummary}
+                totalCamerasScanned={totalCamerasScanned}
+                totalVehiclesDetected={totalVehiclesDetected}
                 onViewFrame={handleViewFrame}
                 onTrackVehicle={handleTrackVehicle}
               />
