@@ -134,6 +134,12 @@ const Index = () => {
                 New Search
               </button>
             )}
+            <Link
+              to="/overview"
+              className="flex items-center gap-1.5 text-sm bg-card border border-border rounded-lg px-3 py-1.5 text-muted-foreground hover:text-foreground hover:border-primary/50 transition-colors"
+            >
+              <FileText className="w-4 h-4" /> Project PPT
+            </Link>
           </div>
         </div>
       </header>
