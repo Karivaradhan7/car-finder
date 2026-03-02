@@ -5,7 +5,7 @@ import AIProcessingView from "@/components/AIProcessingView";
 import VehicleResultsDashboard from "@/components/VehicleResultsDashboard";
 import VehicleComparisonView from "@/components/VehicleComparisonView";
 import { VehicleResult } from "@/components/VehicleResultCard";
-import { Shield, Database, Cpu, Camera } from "lucide-react";
+import { Shield, Database, Cpu, Camera, FileText } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 
