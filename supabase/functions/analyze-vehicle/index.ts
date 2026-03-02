@@ -34,17 +34,7 @@ For each detection provide:
 - Match confidence percentage (0-100)
 - Match status: "exact" (>85%) or "partial" (60-85%)
 - A brief description of the CCTV frame context (e.g., "Vehicle spotted turning left at Main St intersection")
-- An imageUrl: generate a realistic placeholder URL in the format "https://images.unsplash.com/photo-XXXXXXXXX?w=400&h=300&fit=crop" using real Unsplash photo IDs for vehicles/cars/traffic. Use these real Unsplash IDs:
-  * For white cars: "photo-1549317661-bd32c8ce0afa"
-  * For black cars: "photo-1503376780353-7e6692767b70"  
-  * For red cars: "photo-1552519507-da3b142c6e3d"
-  * For blue cars: "photo-1494976388531-d1058494cdd8"
-  * For silver/gray cars: "photo-1553440569-bcc63803a83d"
-  * For SUVs: "photo-1519641471654-76ce0107ad1b"
-  * For trucks: "photo-1561361513-2d000a50f0dc"
-  * For bikes: "photo-1558981806-ec527fa84c39"
-  * For generic vehicles: "photo-1492144534655-ae79c964c9d7"
-  Mix and vary these across results.
+- An imageUrl: use the Unsplash Source API to get a relevant image matching the EXACT vehicle brand and model. Format: "https://source.unsplash.com/400x300/?[brand],[model],[color],car" — for example for a white Toyota Innova use "https://source.unsplash.com/400x300/?Toyota,Innova,white,MPV" and for a black BMW Sedan use "https://source.unsplash.com/400x300/?BMW,sedan,black,car". Always include the brand name, model name, color, and vehicle type as query parameters. This ensures the image matches the detected vehicle accurately.
 
 Generate 4-6 realistic vehicle matches with varying confidence. At least 2 should be high-confidence exact matches. Include camera locations near the crime location given by the witness.`;
 
