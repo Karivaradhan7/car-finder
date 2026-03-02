@@ -34,7 +34,27 @@ For each detection provide:
 - Match confidence percentage (0-100)
 - Match status: "exact" (>85%) or "partial" (60-85%)
 - A brief description of the CCTV frame context (e.g., "Vehicle spotted turning left at Main St intersection")
-- An imageUrl: use the Unsplash Source API to get a relevant image matching the EXACT vehicle brand and model. Format: "https://source.unsplash.com/400x300/?[brand],[model],[color],car" — for example for a white Toyota Innova use "https://source.unsplash.com/400x300/?Toyota,Innova,white,MPV" and for a black BMW Sedan use "https://source.unsplash.com/400x300/?BMW,sedan,black,car". Always include the brand name, model name, color, and vehicle type as query parameters. This ensures the image matches the detected vehicle accurately.
+- An imageUrl: pick the BEST matching image URL from this curated list based on the vehicle brand/model/type detected. ONLY use URLs from this list, pick the closest match:
+  TOYOTA: Innova/MPV → "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/2016_Toyota_Innova_2.0_G_%28facelift%2C_brown%29%2C_front_8.21.18.jpg/320px-2016_Toyota_Innova_2.0_G_%28facelift%2C_brown%29%2C_front_8.21.18.jpg"
+  TOYOTA: Camry/Sedan → "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/2021_Toyota_Camry_%28XV70%2C_facelift%29%2C_front_8.27.20.jpg/320px-2021_Toyota_Camry_%28XV70%2C_facelift%29%2C_front_8.27.20.jpg"
+  TOYOTA: Fortuner/SUV → "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Toyota_Fortuner_facelift_2019_%28cropped%29.jpg/320px-Toyota_Fortuner_facelift_2019_%28cropped%29.jpg"
+  TOYOTA: Corolla/Sedan → "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/2019_Toyota_Corolla_sedan_%28facelift%2C_blue%29%2C_front_8.23.19.jpg/320px-2019_Toyota_Corolla_sedan_%28facelift%2C_blue%29%2C_front_8.23.19.jpg"
+  HYUNDAI: Creta/SUV → "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Hyundai_Creta_facelift_%28India%29%2C_front_8.15.22.jpg/320px-Hyundai_Creta_facelift_%28India%29%2C_front_8.15.22.jpg"
+  HYUNDAI: i20/Hatchback → "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/2021_Hyundai_i20_1.0_T-GDi_Premium_%28UK%29%2C_front_8.15.21.jpg/320px-2021_Hyundai_i20_1.0_T-GDi_Premium_%28UK%29%2C_front_8.15.21.jpg"
+  HONDA: City/Sedan → "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/2021_Honda_City_e%3AHEV_%28GN6%29%2C_front_8.18.22.jpg/320px-2021_Honda_City_e%3AHEV_%28GN6%29%2C_front_8.18.22.jpg"
+  HONDA: Civic/Sedan → "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/2022_Honda_Civic_e%3AHEV_%28FL4%29%2C_front_9.5.22.jpg/320px-2022_Honda_Civic_e%3AHEV_%28FL4%29%2C_front_9.5.22.jpg"
+  BMW: 3 Series/Sedan → "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/2019_BMW_330i_M_Sport_%28G20%29%2C_front_8.28.19.jpg/320px-2019_BMW_330i_M_Sport_%28G20%29%2C_front_8.28.19.jpg"
+  BMW: X5/SUV → "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/2019_BMW_X5_xDrive30d_%28G05%29%2C_front_7.15.19.jpg/320px-2019_BMW_X5_xDrive30d_%28G05%29%2C_front_7.15.19.jpg"
+  MERCEDES: C-Class/Sedan → "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/2022_Mercedes-Benz_C300_AMG_Line_%28W206%29%2C_front_9.12.22.jpg/320px-2022_Mercedes-Benz_C300_AMG_Line_%28W206%29%2C_front_9.12.22.jpg"
+  AUDI: A4/Sedan → "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/2020_Audi_A4_S_Line_35_TDI_S-A_%28B9%2C_facelift%2C_grey%29%2C_front_8.12.20.jpg/320px-2020_Audi_A4_S_Line_35_TDI_S-A_%28B9%2C_facelift%2C_grey%29%2C_front_8.12.20.jpg"
+  FORD: Endeavour/SUV → "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/2022_Ford_Everest_Titanium%2B_4WD_%28Thailand%29%2C_front_10.22.22.jpg/320px-2022_Ford_Everest_Titanium%2B_4WD_%28Thailand%29%2C_front_10.22.22.jpg"
+  SUZUKI: Swift/Hatchback → "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/2021_Suzuki_Swift_Sport_%28AZ%2C_facelift%29%2C_front_8.16.21.jpg/320px-2021_Suzuki_Swift_Sport_%28AZ%2C_facelift%29%2C_front_8.16.21.jpg"
+  MAHINDRA: Scorpio/SUV → "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Mahindra_Scorpio_N%2C_front_left.jpg/320px-Mahindra_Scorpio_N%2C_front_left.jpg"
+  GENERIC: Sedan → "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/2019_Toyota_Camry_%28XV70%29_sedan_%282019-11-01%29_01.jpg/320px-2019_Toyota_Camry_%28XV70%29_sedan_%282019-11-01%29_01.jpg"
+  GENERIC: SUV → "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Toyota_Fortuner_facelift_2019_%28cropped%29.jpg/320px-Toyota_Fortuner_facelift_2019_%28cropped%29.jpg"
+  GENERIC: Truck → "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/2020_Ford_F-150_XLT_SuperCrew_%28facelift%29%2C_front_9.17.20.jpg/320px-2020_Ford_F-150_XLT_SuperCrew_%28facelift%29%2C_front_9.17.20.jpg"
+  GENERIC: Bike/Motorcycle → "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/2020_Royal_Enfield_Meteor_350_%28Fireball%29%2C_left.jpg/320px-2020_Royal_Enfield_Meteor_350_%28Fireball%29%2C_left.jpg"
+  Choose the URL that best matches the brand and model. If no exact match, use the generic one for the vehicle type.
 
 Generate 4-6 realistic vehicle matches with varying confidence. At least 2 should be high-confidence exact matches. Include camera locations near the crime location given by the witness.`;
 
