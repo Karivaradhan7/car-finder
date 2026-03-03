@@ -35,10 +35,10 @@ const VehicleResultCard = ({ result, onViewFrame, onTrackVehicle }: VehicleResul
     <div className="bg-card/50 backdrop-blur-sm border border-border rounded-xl overflow-hidden hover:border-primary/50 transition-colors">
       {/* CCTV Frame Image */}
       <div className="relative w-full h-44 bg-muted/30 flex items-center justify-center overflow-hidden">
-        {result.imageUrl && !imgError ? (
+        {!imgError ? (
           <img
-            src={result.imageUrl}
-            alt={`CCTV capture of ${result.brand} ${result.model || ""}`}
+            src={resolvedImage}
+            alt={`${result.brand} ${result.model || ""}`}
             className="w-full h-full object-cover"
             onError={() => setImgError(true)}
           />
