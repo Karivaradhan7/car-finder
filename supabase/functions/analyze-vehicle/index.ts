@@ -34,27 +34,32 @@ For each detection provide:
 - Match confidence percentage (0-100)
 - Match status: "exact" (>85%) or "partial" (60-85%)
 - A brief description of the CCTV frame context (e.g., "Vehicle spotted turning left at Main St intersection")
-- An imageUrl: pick the BEST matching image URL from this curated list based on the vehicle brand/model/type detected. ONLY use URLs from this list, pick the closest match:
-  TOYOTA: Innova/MPV → "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/2016_Toyota_Innova_2.0_G_%28facelift%2C_brown%29%2C_front_8.21.18.jpg/320px-2016_Toyota_Innova_2.0_G_%28facelift%2C_brown%29%2C_front_8.21.18.jpg"
-  TOYOTA: Camry/Sedan → "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/2021_Toyota_Camry_%28XV70%2C_facelift%29%2C_front_8.27.20.jpg/320px-2021_Toyota_Camry_%28XV70%2C_facelift%29%2C_front_8.27.20.jpg"
-  TOYOTA: Fortuner/SUV → "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Toyota_Fortuner_facelift_2019_%28cropped%29.jpg/320px-Toyota_Fortuner_facelift_2019_%28cropped%29.jpg"
-  TOYOTA: Corolla/Sedan → "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/2019_Toyota_Corolla_sedan_%28facelift%2C_blue%29%2C_front_8.23.19.jpg/320px-2019_Toyota_Corolla_sedan_%28facelift%2C_blue%29%2C_front_8.23.19.jpg"
-  HYUNDAI: Creta/SUV → "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Hyundai_Creta_facelift_%28India%29%2C_front_8.15.22.jpg/320px-Hyundai_Creta_facelift_%28India%29%2C_front_8.15.22.jpg"
-  HYUNDAI: i20/Hatchback → "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/2021_Hyundai_i20_1.0_T-GDi_Premium_%28UK%29%2C_front_8.15.21.jpg/320px-2021_Hyundai_i20_1.0_T-GDi_Premium_%28UK%29%2C_front_8.15.21.jpg"
-  HONDA: City/Sedan → "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/2021_Honda_City_e%3AHEV_%28GN6%29%2C_front_8.18.22.jpg/320px-2021_Honda_City_e%3AHEV_%28GN6%29%2C_front_8.18.22.jpg"
-  HONDA: Civic/Sedan → "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/2022_Honda_Civic_e%3AHEV_%28FL4%29%2C_front_9.5.22.jpg/320px-2022_Honda_Civic_e%3AHEV_%28FL4%29%2C_front_9.5.22.jpg"
-  BMW: 3 Series/Sedan → "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/2019_BMW_330i_M_Sport_%28G20%29%2C_front_8.28.19.jpg/320px-2019_BMW_330i_M_Sport_%28G20%29%2C_front_8.28.19.jpg"
-  BMW: X5/SUV → "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/2019_BMW_X5_xDrive30d_%28G05%29%2C_front_7.15.19.jpg/320px-2019_BMW_X5_xDrive30d_%28G05%29%2C_front_7.15.19.jpg"
-  MERCEDES: C-Class/Sedan → "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/2022_Mercedes-Benz_C300_AMG_Line_%28W206%29%2C_front_9.12.22.jpg/320px-2022_Mercedes-Benz_C300_AMG_Line_%28W206%29%2C_front_9.12.22.jpg"
-  AUDI: A4/Sedan → "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/2020_Audi_A4_S_Line_35_TDI_S-A_%28B9%2C_facelift%2C_grey%29%2C_front_8.12.20.jpg/320px-2020_Audi_A4_S_Line_35_TDI_S-A_%28B9%2C_facelift%2C_grey%29%2C_front_8.12.20.jpg"
-  FORD: Endeavour/SUV → "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/2022_Ford_Everest_Titanium%2B_4WD_%28Thailand%29%2C_front_10.22.22.jpg/320px-2022_Ford_Everest_Titanium%2B_4WD_%28Thailand%29%2C_front_10.22.22.jpg"
-  SUZUKI: Swift/Hatchback → "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/2021_Suzuki_Swift_Sport_%28AZ%2C_facelift%29%2C_front_8.16.21.jpg/320px-2021_Suzuki_Swift_Sport_%28AZ%2C_facelift%29%2C_front_8.16.21.jpg"
-  MAHINDRA: Scorpio/SUV → "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Mahindra_Scorpio_N%2C_front_left.jpg/320px-Mahindra_Scorpio_N%2C_front_left.jpg"
-  GENERIC: Sedan → "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/2019_Toyota_Camry_%28XV70%29_sedan_%282019-11-01%29_01.jpg/320px-2019_Toyota_Camry_%28XV70%29_sedan_%282019-11-01%29_01.jpg"
-  GENERIC: SUV → "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Toyota_Fortuner_facelift_2019_%28cropped%29.jpg/320px-Toyota_Fortuner_facelift_2019_%28cropped%29.jpg"
-  GENERIC: Truck → "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/2020_Ford_F-150_XLT_SuperCrew_%28facelift%29%2C_front_9.17.20.jpg/320px-2020_Ford_F-150_XLT_SuperCrew_%28facelift%29%2C_front_9.17.20.jpg"
-  GENERIC: Bike/Motorcycle → "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/2020_Royal_Enfield_Meteor_350_%28Fireball%29%2C_left.jpg/320px-2020_Royal_Enfield_Meteor_350_%28Fireball%29%2C_left.jpg"
-  Choose the URL that best matches the brand and model. If no exact match, use the generic one for the vehicle type.
+- An imageUrl: pick the BEST matching image URL from this curated list based on the vehicle brand/model/color detected. ONLY use URLs from this exact list, never invent new URLs:
+  AUDI R8 Coupe Silver → "https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?w=400&h=300&fit=crop"
+  AUDI S4 Sedan Black → "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=400&h=300&fit=crop"
+  BMW M3 Coupe White → "https://images.unsplash.com/photo-1555215695-3004980ad54e?w=400&h=300&fit=crop"
+  BMW X6 SUV Black → "https://images.unsplash.com/photo-1617814076367-b759c7d7e738?w=400&h=300&fit=crop"
+  BMW Z4 Convertible Red → "https://images.unsplash.com/photo-1617531653332-bd46c24f2068?w=400&h=300&fit=crop"
+  Chevrolet Corvette Yellow Coupe → "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=400&h=300&fit=crop"
+  Chevrolet Camaro Red Coupe → "https://images.unsplash.com/photo-1603553329474-99f95f35394f?w=400&h=300&fit=crop"
+  Ferrari 458 Red Coupe → "https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=400&h=300&fit=crop"
+  Ferrari California Red Convertible → "https://images.unsplash.com/photo-1592198084033-aade902d1aae?w=400&h=300&fit=crop"
+  Ford Mustang Blue Coupe → "https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=400&h=300&fit=crop"
+  Ford F-150 White Truck → "https://images.unsplash.com/photo-1590362891991-f776e747a588?w=400&h=300&fit=crop"
+  Honda Civic Silver Sedan → "https://images.unsplash.com/photo-1619682817481-e994891cd1f5?w=400&h=300&fit=crop"
+  Lamborghini Aventador Orange Coupe → "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=400&h=300&fit=crop"
+  Lamborghini Gallardo Yellow Coupe → "https://images.unsplash.com/photo-1621135802920-133df287f89c?w=400&h=300&fit=crop"
+  Mercedes-Benz SLS Silver Coupe → "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=400&h=300&fit=crop"
+  Mercedes-Benz C-Class Black Sedan → "https://images.unsplash.com/photo-1553440569-bcc63803a83d?w=400&h=300&fit=crop"
+  Nissan GT-R Silver Coupe → "https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?w=400&h=300&fit=crop"
+  Porsche 911 Turbo White Coupe → "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=400&h=300&fit=crop"
+  Porsche Cayenne Black SUV → "https://images.unsplash.com/photo-1606664949798-c7c8d6fa05a7?w=400&h=300&fit=crop"
+  Tesla Model S Red Sedan → "https://images.unsplash.com/photo-1560958089-b8a1929cea89?w=400&h=300&fit=crop"
+  Toyota Supra Orange Coupe → "https://images.unsplash.com/photo-1626668893632-6f3a4466d22f?w=400&h=300&fit=crop"
+  Aston Martin V8 Silver Coupe → "https://images.unsplash.com/photo-1596636478939-59fed7a083f2?w=400&h=300&fit=crop"
+  Bentley Continental Black Coupe → "https://images.unsplash.com/photo-1563720360172-67b8f3dce741?w=400&h=300&fit=crop"
+  Jaguar XKR Blue Coupe → "https://images.unsplash.com/photo-1617814076668-3dc5c477ba07?w=400&h=300&fit=crop"
+  RULE: Match by brand first, then model/type, then color. For Toyota → use Toyota Supra image. For Honda → use Honda Civic image. For Sedan → Mercedes C-Class or Honda Civic. For SUV → BMW X6 or Porsche Cayenne. For Truck → Ford F-150. For sports/coupe → Ferrari or Lamborghini based on color.
 
 Generate 4-6 realistic vehicle matches with varying confidence. At least 2 should be high-confidence exact matches. Include camera locations near the crime location given by the witness.`;
 
