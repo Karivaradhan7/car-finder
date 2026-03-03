@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Eye, Navigation, Car, Camera, MapPin } from "lucide-react";
+import { getVehicleImage } from "@/lib/vehicleImageResolver";
 
 export interface VehicleResult {
   id: string;
