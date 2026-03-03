@@ -29,6 +29,7 @@ interface VehicleResultCardProps {
 const VehicleResultCard = ({ result, onViewFrame, onTrackVehicle }: VehicleResultCardProps) => {
   const isExactMatch = result.matchStatus === "exact";
   const [imgError, setImgError] = useState(false);
+  const resolvedImage = getVehicleImage(result.brand, result.model, result.vehicleType);
 
   return (
     <div className="bg-card/50 backdrop-blur-sm border border-border rounded-xl overflow-hidden hover:border-primary/50 transition-colors">
