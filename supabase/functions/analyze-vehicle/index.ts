@@ -105,7 +105,6 @@ Generate 4-6 realistic vehicle matches with varying confidence. At least 2 shoul
                             enum: ["exact", "partial"],
                           },
                           description: { type: "string", description: "Brief context of the CCTV frame" },
-                          imageUrl: { type: "string", description: "Unsplash vehicle image URL" },
                         },
                         required: [
                           "id",
@@ -119,7 +118,6 @@ Generate 4-6 realistic vehicle matches with varying confidence. At least 2 shoul
                           "matchConfidence",
                           "matchStatus",
                           "description",
-                          "imageUrl",
                         ],
                       },
                     },
