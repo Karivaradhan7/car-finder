@@ -37,6 +37,20 @@ const WitnessInputPanel = ({ onSearch }: WitnessInputPanelProps) => {
     onSearch(filters);
   };
 
+  const handleTryExample = () => {
+    const example: WitnessFilters = {
+      vehicleType: "SUV",
+      vehicleColor: "White",
+      vehicleBrand: "Toyota",
+      vehicleModel: "Innova",
+      partialPlate: "KA-05",
+      crimeLocation: "MG Road, Bangalore",
+      timeRange: "18:00 - 19:00",
+    };
+    setFilters(example);
+    onSearch(example);
+  };
+
   return (
     <div className="bg-card/50 backdrop-blur-sm border border-border rounded-xl p-6 space-y-6">
       <div className="flex items-center gap-3 mb-6">
@@ -146,10 +160,15 @@ const WitnessInputPanel = ({ onSearch }: WitnessInputPanelProps) => {
         <p className="text-sm text-muted-foreground mb-4 italic">
           "Witness provides visual details of the vehicle seen at the crime scene — color, brand, model, partial plate number."
         </p>
-        <Button onClick={handleSearch} className="w-full md:w-auto gap-2">
-          <Search className="w-4 h-4" />
-          Search CCTV Cameras
-        </Button>
+        <div className="flex flex-wrap gap-3">
+          <Button onClick={handleSearch} className="gap-2">
+            <Search className="w-4 h-4" />
+            Search CCTV Cameras
+          </Button>
+          <Button variant="outline" onClick={handleTryExample} className="gap-2 border-primary/40 text-primary hover:bg-primary/10">
+            ✦ Try Example: White Toyota Innova
+          </Button>
+        </div>
       </div>
     </div>
   );
