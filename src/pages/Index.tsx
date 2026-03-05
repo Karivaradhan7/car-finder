@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import WitnessInputPanel, { WitnessFilters } from "@/components/WitnessInputPanel";
 import AIProcessingView from "@/components/AIProcessingView";
@@ -79,22 +79,13 @@ const Index = () => {
     // If API hasn't finished yet, wait — the useEffect below handles it
   };
 
-  // When both animation and API are done, show results
-  const handleApiAndAnimationReady = () => {
+  // When both animation AND API are done, transition to results
+  useEffect(() => {
     if (apiDone && pendingResults && appState === "processing") {
       setResults(pendingResults);
       setAppState("results");
     }
-  };
-
-  // Check if API finished after animation completed
-  if (apiDone && pendingResults && appState === "processing") {
-    // Defer to next tick to avoid state update during render
-    setTimeout(() => {
-      setResults(pendingResults);
-      setAppState("results");
-    }, 0);
-  }
+  }, [apiDone, pendingResults, appState]);
 
   const handleViewFrame = (id: string) => {
     console.log("View frame:", id);
