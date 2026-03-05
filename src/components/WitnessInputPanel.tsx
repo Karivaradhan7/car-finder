@@ -146,15 +146,10 @@ const WitnessInputPanel = ({ onSearch }: WitnessInputPanelProps) => {
         <p className="text-sm text-muted-foreground mb-4 italic">
           "Witness provides visual details of the vehicle seen at the crime scene — color, brand, model, partial plate number."
         </p>
-        <div className="flex flex-wrap gap-3">
-          <Button onClick={handleSearch} className="gap-2">
-            <Search className="w-4 h-4" />
-            Search CCTV Cameras
-          </Button>
-          <Button variant="outline" onClick={handleTryExample} className="gap-2 border-primary/40 text-primary hover:bg-primary/10">
-            Try Example: White Toyota Innova
-          </Button>
-        </div>
+        <Button onClick={handleSearch} className="gap-2">
+          <Search className="w-4 h-4" />
+          Search CCTV Cameras
+        </Button>
       </div>
     </div>
   );
