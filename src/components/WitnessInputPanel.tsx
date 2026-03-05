@@ -37,20 +37,6 @@ const WitnessInputPanel = ({ onSearch }: WitnessInputPanelProps) => {
     onSearch(filters);
   };
 
-  const handleTryExample = () => {
-    const example: WitnessFilters = {
-      vehicleType: "SUV",
-      vehicleColor: "White",
-      vehicleBrand: "Toyota",
-      vehicleModel: "Innova",
-      partialPlate: "KA-05",
-      crimeLocation: "MG Road, Bangalore",
-      timeRange: "18:00 - 19:00",
-    };
-    setFilters(example);
-    onSearch(example);
-  };
-
   return (
     <div className="bg-card/50 backdrop-blur-sm border border-border rounded-xl p-6 space-y-6">
       <div className="flex items-center gap-3 mb-6">
