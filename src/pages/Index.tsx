@@ -8,6 +8,7 @@ import { VehicleResult } from "@/components/VehicleResultCard";
 import { Shield, Database, Cpu, Camera, FileText } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
+import { mockVehicleResults, mockSummary, mockTotalCamerasScanned, mockTotalVehiclesDetected } from "@/data/mockVehicleResults";
 
 type AppState = "input" | "processing" | "results";
 
