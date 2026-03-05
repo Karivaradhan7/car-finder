@@ -8,6 +8,7 @@ import { VehicleResult } from "@/components/VehicleResultCard";
 import { Shield, Database, Cpu, Camera, FileText } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
+import { mockVehicleResults, mockSummary, mockTotalCamerasScanned, mockTotalVehiclesDetected } from "@/data/mockVehicleResults";
 
 type AppState = "input" | "processing" | "results";
 
@@ -48,7 +49,6 @@ const Index = () => {
           timeDetected: m.timeDetected,
           matchConfidence: m.matchConfidence,
           matchStatus: m.matchStatus,
-          imageUrl: m.imageUrl,
           description: m.description,
         })
       );
@@ -60,9 +60,14 @@ const Index = () => {
       setPendingResults(matches);
       setApiDone(true);
     } catch (err: any) {
-      console.error("Vehicle analysis error:", err);
-      toast.error(err.message || "Failed to analyze vehicles");
-      setAppState("input");
+      console.error("Vehicle analysis error — using mock data:", err);
+      toast.info("Live API unavailable — showing demo results");
+      // Fallback to mock data so the app works without backend
+      setAnalysisSummary(mockSummary);
+      setTotalCamerasScanned(mockTotalCamerasScanned);
+      setTotalVehiclesDetected(mockTotalVehiclesDetected);
+      setPendingResults(mockVehicleResults);
+      setApiDone(true);
     }
   };
 

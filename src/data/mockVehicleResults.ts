@@ -1,0 +1,80 @@
+import { VehicleResult } from "@/components/VehicleResultCard";
+
+export const mockVehicleResults: VehicleResult[] = [
+  {
+    id: "1",
+    vehicleType: "SUV",
+    color: "White",
+    brand: "Toyota",
+    model: "Innova",
+    plateNumber: "KA-05-MN-1234",
+    cameraId: "CCTV-MG-RD-003",
+    cameraLocation: "MG Road, Near Trinity Circle, Bangalore",
+    timeDetected: "18:12:34",
+    matchConfidence: 94,
+    matchStatus: "exact",
+    description: "White SUV spotted moving south on MG Road, matches witness description. Plate partially visible.",
+  },
+  {
+    id: "2",
+    vehicleType: "SUV",
+    color: "White",
+    brand: "Toyota",
+    model: "Innova",
+    plateNumber: "KA-05-AB-1238",
+    cameraId: "CAM-NH48-017",
+    cameraLocation: "Residency Road Junction, Bangalore",
+    timeDetected: "18:19:07",
+    matchConfidence: 91,
+    matchStatus: "exact",
+    description: "Same white Toyota Innova re-identified moving towards Residency Road. High confidence match via appearance embedding.",
+  },
+  {
+    id: "3",
+    vehicleType: "SUV",
+    color: "White",
+    brand: "Toyota",
+    model: "Fortuner",
+    plateNumber: "KA-05-PQ-5521",
+    cameraId: "TC-JN-045",
+    cameraLocation: "Brigade Road - MG Road Intersection",
+    timeDetected: "18:08:51",
+    matchConfidence: 78,
+    matchStatus: "partial",
+    description: "White Toyota Fortuner — similar profile to Innova. Partial plate match KA-05. Possible alternative match.",
+  },
+  {
+    id: "4",
+    vehicleType: "SUV",
+    color: "Silver",
+    brand: "Toyota",
+    model: "Innova",
+    plateNumber: "KA-05-XY-9901",
+    cameraId: "CCTV-KR-PK-008",
+    cameraLocation: "Cubbon Park Road, Bangalore",
+    timeDetected: "18:23:15",
+    matchConfidence: 68,
+    matchStatus: "partial",
+    description: "Silver Toyota Innova heading north. Color differs from witness description (silver vs white) — possible lighting variation.",
+  },
+  {
+    id: "5",
+    vehicleType: "Car",
+    color: "White",
+    brand: "Hyundai",
+    model: "Creta",
+    plateNumber: "KA-01-CD-3342",
+    cameraId: "TC-JN-061",
+    cameraLocation: "St. Mark's Road, Bangalore",
+    timeDetected: "18:16:40",
+    matchConfidence: 62,
+    matchStatus: "partial",
+    description: "White Hyundai Creta — same color, similar size. Brand differs from witness. Low priority match.",
+  },
+];
+
+export const mockSummary =
+  "Scanned 24 CCTV and traffic cameras in the MG Road, Bangalore area between 18:00–19:00. Detected 5 vehicle matches using YOLOv8 detection + ResNet-50 appearance embeddings. 2 high-confidence exact matches identified for White Toyota Innova with partial plate KA-05.";
+
+export const mockTotalCamerasScanned = 24;
+export const mockTotalVehiclesDetected = 5;

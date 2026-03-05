@@ -166,7 +166,7 @@ const WitnessInputPanel = ({ onSearch }: WitnessInputPanelProps) => {
             Search CCTV Cameras
           </Button>
           <Button variant="outline" onClick={handleTryExample} className="gap-2 border-primary/40 text-primary hover:bg-primary/10">
-            ✦ Try Example: White Toyota Innova
+            Try Example: White Toyota Innova
           </Button>
         </div>
       </div>
