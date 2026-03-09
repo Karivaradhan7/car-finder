@@ -104,5 +104,3 @@
   50% { box-shadow: 0 0 40px -5px hsl(199 89% 48% / 0.5); }
 }
 
-@layer utilities {
-}
